@@ -1,4 +1,61 @@
 .header {
   background-color: $color-grey-dark-1;
-  grid-column: full-start / col-end 6;//col-end 6--> automatic grid numbering
+  grid-column: full-start / col-end 6; //col-end 6--> automatic grid numbering
+  background-image: linear-gradient(
+      rgba($color-secondary, 0.93),
+      rgba($color-secondary, 0.93)
+    ),
+    url(../img/hero.jpeg); //rgba goes from same color to same color, best way of creating an overlay
+  background-size: cover;
+  background-position: center;
+  padding: 8rem;
+  padding-top: 4rem;
+
+  display: grid;
+  grid-template-rows: 1fr min-content 6rem 1fr;
+  //1fr--> all content is sized automatically
+  //grid-template-rows: 80vh min-content 40vw repeat(3, min-content);
+  grid-template-columns: max-content;
+  //min-content- fit the smallest width element perfectly, all other elements are wrapped
+  //max-content- fit the largest width element perfectly, all other elements are given as much space as largest
+  grid-row-gap: 1.5rem;
+  justify-content: center; //center content horizontally
+
+  &__logo {
+    height: 3rem;
+    justify-self: center;
+  }
+
+  &__seenon-text {
+    display: grid;
+    grid-template-columns: 1fr max-content 1fr;
+    grid-column-gap: 1.5rem;
+    align-items: center; //center content vertically
+    font-size: 1.6rem;
+    color: $color-grey-light-2;
+
+    &::before,
+    &::after {
+      content: '';
+      height: 1px;
+      display: block;
+      background-color: currentColor;
+    }
+  }
+
+  &__seenon-logo {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 3rem;
+    justify-items: center;
+    img {
+      height: 2.5rem; //width scales automatically, since all logos should have same height
+      filter: brightness(70%);
+    }
+  }
+
+  &__btn {
+    align-self: start;
+    justify-self: start;
+  }
 }
