@@ -1,0 +1,34 @@
+.features {
+  grid-column: center-start / center-end;
+  margin: 15rem 0;
+
+  display: grid; //grid item becomes a grid container
+  grid-gap: 6rem;
+  // grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(25rem, 1fr)
+  ); //--> this converts into responsive grid
+  //auto-fit--> fits as many columns as possible of width given by minmax
+  align-items: start; //default is stretch, this causes excessive space bw heading and text
+}
+
+.feature {
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  //if &__icon width is changed later, then text will adjust; so min-content
+  grid-gap: 1.5rem 2.5rem;
+
+  &__icon {
+    fill: $color-primary;
+    width: 4.5rem;
+    height: 4.5rem;
+    grid-row: 1 / span 2;
+    transform: translateY(-1rem);
+    // grid-row: 1 / -1; this doesnt work bcoz -1 continues upto last explicit grid,
+    // since we didnt explicit rows, this doesnt work
+  }
+  &__text {
+    font-size: 1.7rem;
+  }
+}
