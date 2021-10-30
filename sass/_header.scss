@@ -12,14 +12,23 @@
   padding-top: 4rem;
 
   display: grid;
-  grid-template-rows: 1fr min-content 6rem 1fr;
+  grid-template-rows: 1fr min-content minmax(6rem, min-content) 1fr;
   //1fr--> all content is sized automatically
   //grid-template-rows: 80vh min-content 40vw repeat(3, min-content);
-  grid-template-columns: max-content;
+  // grid-template-columns: max-content;
+  grid-template-columns: minmax(min-content, max-content); //responsive
   //min-content- fit the smallest width element perfectly, all other elements are wrapped
   //max-content- fit the largest width element perfectly, all other elements are given as much space as largest
   grid-row-gap: 1.5rem;
   justify-content: center; //center content horizontally
+
+  @media only screen and (max-width: $bp-medium) {
+    grid-column: 1 / -1;
+  }
+
+  @media only screen and (max-width: $bp-small) {
+    padding: 5rem;
+  }
 
   &__logo {
     height: 3rem;
@@ -48,8 +57,10 @@
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 3rem;
     justify-items: center;
+    align-items: center; //content -changes grid, items changes items of grid
     img {
-      height: 2.5rem; //width scales automatically, since all logos should have same height
+      max-height: 2.5rem; //width scales automatically, since all logos should have same height
+      max-width: 100%; //when height decreases, width scales automatically
       filter: brightness(70%);
     }
   }

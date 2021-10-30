@@ -7,7 +7,11 @@
   align-content: center;
   justify-content: center;
   grid-row-gap: 2rem;
-  justify-items: center; //doenst affect realtors name bcoz it already occupies min-content 
+  justify-items: center; //doenst affect realtors name bcoz it already occupies min-content
+
+  @media only screen and (max-width: $bp-medium) {
+    grid-column: 1 / -1;
+  }
 
   &__list {
     display: grid;
@@ -15,6 +19,16 @@
     grid-column-gap: 2rem;
     grid-row-gap: 5vh; //change dist bw rows when height changes, so vh
     align-items: center; //centres vertically
+
+    @media only screen and (max-width: $bp-medium) {
+      grid-column: 1 / -1;
+      grid-template-columns: repeat(3, min-content max-content);
+      //image name image name ... placed adjacent
+    }
+
+    @media only screen and (max-width: $bp-small) {
+      grid-template-columns: min-content max-content;
+    }
   }
 
   &__img {
